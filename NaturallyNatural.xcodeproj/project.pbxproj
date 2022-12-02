@@ -11,6 +11,9 @@
 		BFCEC7F3293A0BC2009F005C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC7F2293A0BC2009F005C /* ContentView.swift */; };
 		BFCEC7F5293A0BC3009F005C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCEC7F4293A0BC3009F005C /* Assets.xcassets */; };
 		BFCEC7F8293A0BC3009F005C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCEC7F7293A0BC3009F005C /* Preview Assets.xcassets */; };
+		BFCEC80A293A13FD009F005C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC809293A13FD009F005C /* BaseView.swift */; };
+		BFCEC80C293A143A009F005C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC80B293A143A009F005C /* BaseViewModel.swift */; };
+		BFCEC811293A2383009F005C /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC810293A2383009F005C /* CustomCurveShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,16 @@
 		BFCEC7F2293A0BC2009F005C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFCEC7F4293A0BC3009F005C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFCEC7F7293A0BC3009F005C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BFCEC7FF293A0BF9009F005C /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Bold.ttf"; path = "../../../../Downloads/Roboto_Condensed/RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		BFCEC800293A0BF9009F005C /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Light.ttf"; path = "../../../../Downloads/Roboto_Condensed/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		BFCEC801293A0BF9009F005C /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-LightItalic.ttf"; path = "../../../../Downloads/Roboto_Condensed/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		BFCEC802293A0BF9009F005C /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Italic.ttf"; path = "../../../../Downloads/Roboto_Condensed/RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		BFCEC803293A0BF9009F005C /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-BoldItalic.ttf"; path = "../../../../Downloads/Roboto_Condensed/RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		BFCEC804293A0BF9009F005C /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Regular.ttf"; path = "../../../../Downloads/Roboto_Condensed/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		BFCEC805293A0C36009F005C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BFCEC809293A13FD009F005C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		BFCEC80B293A143A009F005C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		BFCEC810293A2383009F005C /* CustomCurveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +64,12 @@
 		BFCEC7EF293A0BC2009F005C /* NaturallyNatural */ = {
 			isa = PBXGroup;
 			children = (
+				BFCEC808293A13EE009F005C /* ViewModel */,
+				BFCEC807293A13E5009F005C /* Model */,
+				BFCEC806293A13DD009F005C /* View */,
+				BFCEC805293A0C36009F005C /* Info.plist */,
+				BFCEC80F293A2374009F005C /* Extension */,
+				BFCEC7FE293A0BE9009F005C /* Font */,
 				BFCEC7F0293A0BC2009F005C /* NaturallyNaturalApp.swift */,
 				BFCEC7F2293A0BC2009F005C /* ContentView.swift */,
 				BFCEC7F4293A0BC3009F005C /* Assets.xcassets */,
@@ -65,6 +84,50 @@
 				BFCEC7F7293A0BC3009F005C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFCEC7FE293A0BE9009F005C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				BFCEC7FF293A0BF9009F005C /* RobotoCondensed-Bold.ttf */,
+				BFCEC803293A0BF9009F005C /* RobotoCondensed-BoldItalic.ttf */,
+				BFCEC802293A0BF9009F005C /* RobotoCondensed-Italic.ttf */,
+				BFCEC800293A0BF9009F005C /* RobotoCondensed-Light.ttf */,
+				BFCEC801293A0BF9009F005C /* RobotoCondensed-LightItalic.ttf */,
+				BFCEC804293A0BF9009F005C /* RobotoCondensed-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		BFCEC806293A13DD009F005C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFCEC809293A13FD009F005C /* BaseView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BFCEC807293A13E5009F005C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BFCEC808293A13EE009F005C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BFCEC80B293A143A009F005C /* BaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BFCEC80F293A2374009F005C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BFCEC810293A2383009F005C /* CustomCurveShape.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFCEC80A293A13FD009F005C /* BaseView.swift in Sources */,
+				BFCEC80C293A143A009F005C /* BaseViewModel.swift in Sources */,
+				BFCEC811293A2383009F005C /* CustomCurveShape.swift in Sources */,
 				BFCEC7F3293A0BC2009F005C /* ContentView.swift in Sources */,
 				BFCEC7F1293A0BC2009F005C /* NaturallyNaturalApp.swift in Sources */,
 			);
@@ -270,6 +336,7 @@
 				DEVELOPMENT_TEAM = L8QX5LU28U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NaturallyNatural/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +366,7 @@
 				DEVELOPMENT_TEAM = L8QX5LU28U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NaturallyNatural/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
