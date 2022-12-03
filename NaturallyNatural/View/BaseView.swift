@@ -21,7 +21,7 @@ struct BaseView: View {
     var body: some View {
         TabView(selection: $baseVM.currentTab) {
             
-            Text("Home")
+            HomeView()
                 .environmentObject(baseVM)
                 .frame(maxWidth:.infinity,maxHeight: .infinity)
                 .background(Color.black.opacity(0.1))
