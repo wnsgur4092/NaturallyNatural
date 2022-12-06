@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFB6CE50293F6FF4000EBDB3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6CE4F293F6FF4000EBDB3 /* CardView.swift */; };
 		BFCEC7F1293A0BC2009F005C /* NaturallyNaturalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC7F0293A0BC2009F005C /* NaturallyNaturalApp.swift */; };
 		BFCEC7F3293A0BC2009F005C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC7F2293A0BC2009F005C /* ContentView.swift */; };
 		BFCEC7F5293A0BC3009F005C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCEC7F4293A0BC3009F005C /* Assets.xcassets */; };
@@ -22,11 +23,12 @@
 		BFCEC827293A3D92009F005C /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFCEC821293A3D92009F005C /* RobotoCondensed-Light.ttf */; };
 		BFCEC828293A3D92009F005C /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFCEC822293A3D92009F005C /* RobotoCondensed-Regular.ttf */; };
 		BFCEC829293A3D92009F005C /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFCEC823293A3D92009F005C /* RobotoCondensed-LightItalic.ttf */; };
-		BFCEC82D293A561A009F005C /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC82C293A561A009F005C /* Plants.swift */; };
+		BFCEC82D293A561A009F005C /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC82C293A561A009F005C /* Plant.swift */; };
 		BFCEC833293A5917009F005C /* CustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEC832293A5917009F005C /* CustomCarousel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BFB6CE4F293F6FF4000EBDB3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BFCEC7ED293A0BC2009F005C /* NaturallyNatural.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaturallyNatural.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCEC7F0293A0BC2009F005C /* NaturallyNaturalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturallyNaturalApp.swift; sourceTree = "<group>"; };
 		BFCEC7F2293A0BC2009F005C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,7 +46,7 @@
 		BFCEC821293A3D92009F005C /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		BFCEC822293A3D92009F005C /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		BFCEC823293A3D92009F005C /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
-		BFCEC82C293A561A009F005C /* Plants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
+		BFCEC82C293A561A009F005C /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		BFCEC832293A5917009F005C /* CustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarousel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 			children = (
 				BFCEC809293A13FD009F005C /* BaseView.swift */,
 				BFCEC816293A33BC009F005C /* HomeView.swift */,
+				BFB6CE4F293F6FF4000EBDB3 /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,7 +128,7 @@
 		BFCEC807293A13E5009F005C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BFCEC82C293A561A009F005C /* Plants.swift */,
+				BFCEC82C293A561A009F005C /* Plant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,9 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFCEC80A293A13FD009F005C /* BaseView.swift in Sources */,
-				BFCEC82D293A561A009F005C /* Plants.swift in Sources */,
+				BFCEC82D293A561A009F005C /* Plant.swift in Sources */,
 				BFCEC817293A33BC009F005C /* HomeView.swift in Sources */,
 				BFCEC815293A3393009F005C /* HomeViewModel.swift in Sources */,
+				BFB6CE50293F6FF4000EBDB3 /* CardView.swift in Sources */,
 				BFCEC80C293A143A009F005C /* BaseViewModel.swift in Sources */,
 				BFCEC833293A5917009F005C /* CustomCarousel.swift in Sources */,
 				BFCEC811293A2383009F005C /* CustomCurveShape.swift in Sources */,

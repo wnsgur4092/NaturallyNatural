@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+
 struct HomeView: View {
     //MARK: - PROPERTIES
+    
+    @State var currentIndex : Int = 0
+    
+    var plants : [Plant] = plantsData
     
     let customFont = "RobotoCondensed-Regular"
     
@@ -22,37 +27,45 @@ struct HomeView: View {
                 
                 SearchView()
                 
-                //!!Fix Font!!
-                HStack{
-                    Text("Our Products")
-                        .font(.custom(customFont, size: 30))
-                        .fontWeight(.bold)
-
-                    Spacer()
-                    
-                    Button {
+                VStack {
+                    HStack{
+                        Text("Our Products")
+                            .font(.custom(customFont, size: 30))
+                            .fontWeight(.bold)
                         
-                    } label: {
-                        HStack(spacing: 3){
-                            Text("Sort by")
-                                .font(.custom(customFont, size: 16))
+                        Spacer()
+                        
+                        Button {
                             
-                            Image(systemName:"chevron.down")
-                                .font(.caption.bold())
-                        }
-                        .foregroundColor(.gray)
-                    } //: BUTTON
-
-                    PlantsView()
+                        } label: {
+                            HStack(spacing: 3){
+                                Text("Sort by")
+                                    .font(.custom(customFont, size: 16))
+                                
+                                Image(systemName:"chevron.down")
+                                    .font(.caption.bold())
+                            }
+                            .foregroundColor(.gray)
+                        } //: BUTTON
+                    }//: HSTACK
+                    .padding(.top, 25)
                     
-                }//: HSTACK
-                .padding(.top, 25)
+                    ScrollView(.horizontal, showsIndicators: false){
+                        ForEach(plants) { plant in
+                            CardView(plant: plant)
+                        }
+                            
+                        }
+                    }
+                    
+                    
+                }
             } //: VSTACK
             .padding()
             
             Spacer()
         } //: SCROLLVIEW
-    }
+    
     
     //MARK: - VIEWBUILDER
     //HeaderView
@@ -71,16 +84,15 @@ struct HomeView: View {
             
             Spacer()
             
-            //!!Fix image quality!!
             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(width:150, height:50)
             
             Spacer()
-
+            
             Button {
-
+                
             } label: {
                 Image(systemName: "bell")
                     .font(.title3)
@@ -111,7 +123,7 @@ struct HomeView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width:24, height: 24)
-
+                
                 TextField("Search", text: .constant(""))
                     .font(.custom(customFont, size: 16))
                     .fontWeight(.light)
@@ -124,14 +136,6 @@ struct HomeView: View {
         .padding(.top,16)
     }
     
-    //PlantsView
-    @ViewBuilder
-    func PlantsView()->some View{
-        VStack(alignment: .leading, spacing: 15) {
-            
-        }
-    }
-    
 }
 
 //MARK: - PREVIEW
@@ -140,3 +144,5 @@ struct HomeView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+

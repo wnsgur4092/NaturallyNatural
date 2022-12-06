@@ -18,7 +18,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
     var items: Item
     @Binding var index: Int
     
-    init(index: Binding<Int>,items: Item,spacing: CGFloat = 30,cardPadding: CGFloat = 80,id: KeyPath<Item.Element, ID>,@ViewBuilder content: @escaping (Item.Element,CGSize) -> Content) {
+    init(index: Binding<Int>,items: Item,spacing: CGFloat = 10,cardPadding: CGFloat = 80,id: KeyPath<Item.Element, ID>,@ViewBuilder content: @escaping (Item.Element,CGSize) -> Content) {
         self.content = content
         self.id = id
         self._index = index
@@ -40,30 +40,27 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
             let size = proxy.size
             
             // MARK: Reduced After Applying Card Spacing & Padding
-            let cardWidth = size.width - (cardPadding - spacing)
-            LazyHStack(spacing: spacing){
-                ForEach(items,id: id){movie in
+            let cardWidth = size.width
+            LazyHStack(spacing: 0){
+                ForEach(items,id: id){x in
                     // Since We Already Applied Spacing
                     // And Again We're Adding it to Frame
                     // So Simply Removing the Spacing
                     
-                    let index = indexOf(item: movie)
-                    content(movie,CGSize(width: size.width - cardPadding, height: size.height))
-                        // MARK: Rotating Each View 5 Deg Multiplied With it's Index
-                        // And While Scrolling Setting it to 0, thus it will give some nice Circular Carousel Effect
-                        .rotationEffect(.init(degrees: Double(index) * 5), anchor: .bottom)
-                        .rotationEffect(.init(degrees: rotation), anchor: .bottom)
+                    let index = indexOf(item: x)
+                    content(x,CGSize(width: size.width - cardPadding, height: size.height))
+
                         // MARK: Apply After Rotation, Thus You will Get Smooth Effect
-                        .offset(y: offsetY(index: index, cardWidth: cardWidth))
+
                         .frame(width: size.width - cardPadding, height: size.height)
                         .contentShape(Rectangle())
                 }
             }
-            .padding(.horizontal,spacing)
-            .offset(x: limitScroll())
+
+            .offset(x: offset)
             .contentShape(Rectangle())
             .gesture(
-                DragGesture(minimumDistance: 5)
+                DragGesture(minimumDistance: 2)
                     .updating($translation, body: { value, out, _ in
                         out = value.translation.width
                     })
@@ -71,30 +68,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
                     .onEnded{onEnd(value: $0, cardWidth: cardWidth)}
             )
         }
-        .padding(.top,60)
-        .onAppear{
-            let extraSpace = (cardPadding / 2) - spacing
-            offset = extraSpace
-            lastStoredOffset = extraSpace
-        }
         .animation(.easeInOut, value: translation == 0)
-    }
-    
-    // MARK: Moving Current Item Up
-    func offsetY(index: Int,cardWidth: CGFloat)->CGFloat{
-        // MARK: We're Converting The Current Translation, Not Whole Offset
-        // That's Why Created @GestureState to Hold the Current Translation Data
-        
-        // Converting Translation to -60...60
-        let progress = ((translation < 0 ? translation : -translation) / cardWidth) * 60
-        let yOffset = -progress < 60 ? progress : -(progress + 120)
-        
-        // MARK: Checking Previous, Next And In-Between Offsets
-        let previous = (index - 1) == self.index ? (translation < 0 ? yOffset : -yOffset) : 0
-        let next = (index + 1) == self.index ? (translation < 0 ? -yOffset : yOffset) : 0
-        let In_Between = (index - 1) == self.index ? previous : next
-        
-        return index == self.index ? -60 - yOffset : In_Between
     }
     
     // MARK: Item Index
@@ -106,25 +80,13 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
         return 0
     }
     
-    // MARK: Limiting Scroll On First And Last Items
-    func limitScroll()->CGFloat{
-        let extraSpace = (cardPadding / 2) - spacing
-        if index == 0 && offset > extraSpace{
-            return extraSpace + (offset / 4)
-        }else if index == items.count - 1 && translation < 0{
-            return offset - (translation / 2)
-        }else{
-            return offset
-        }
-    }
-    
     func onChanged(value: DragGesture.Value,cardWidth: CGFloat){
-        let translationX = value.translation.width
+        //Limiting Over Scorll
+        var translationX = value.translation.width
+        translationX = (index == 0 && translationX > 0 ? (translationX / 2) : translationX)
+        translationX = (index == items.count - 1 && translationX < 0 ? (translationX / 2) : translationX)
         offset = translationX + lastStoredOffset
         
-        // MARK: Calculating Rotation
-        let progress = offset / cardWidth
-        rotation = progress * 5
     }
     
     func onEnd(value: DragGesture.Value,cardWidth: CGFloat){
@@ -138,16 +100,11 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
         // Note Since We're Moving On Right Side
         // So All Data Will be Negative
         index = -currentIndex
-        withAnimation(.easeInOut(duration: 0.25)){
+        withAnimation(.interactiveSpring(response: 0.4, dampingFraction: 1, blendDuration: 1)){
             // MARK: Removing Extra Space
             // Why /2 -> Because We Need Both Sides Need to Be Visible
-            let extraSpace = (cardPadding / 2) - spacing
+            let extraSpace = index == 0 ? 0 : (cardPadding / 2)
             offset = (cardWidth * _index) + extraSpace
-            
-            // MARK: Calculating Rotation
-            let progress = offset / cardWidth
-            // Since Index Starts With Zero
-            rotation = (progress * 5).rounded() - 1
         }
         lastStoredOffset = offset
     }
