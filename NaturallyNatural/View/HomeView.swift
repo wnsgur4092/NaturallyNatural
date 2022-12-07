@@ -12,63 +12,38 @@ struct HomeView: View {
     //MARK: - PROPERTIES
     
     @State var currentIndex : Int = 0
+    @State var plants : [Plant] = []
     
-    var plants : [Plant] = plantsData
     
     let customFont = "RobotoCondensed-Regular"
     
     
     //MARK: - BODY
     var body: some View {
-        //!! Change ScrollView
+        
         VStack {
-            VStack(spacing: 15){
-                HeaderView()
-                
-                SearchView()
-                
+            HeaderView()
+            
+            ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    HStack{
-                        Text("Our Products")
-                            .font(.custom(customFont, size: 30))
-                            .fontWeight(.bold)
-                        
-                        Spacer()
-                        
-                        Button {
-                            
-                        } label: {
-                            HStack(spacing: 3){
-                                Text("Sort by")
-                                    .font(.custom(customFont, size: 16))
-                                
-                                Image(systemName:"chevron.down")
-                                    .font(.caption.bold())
-                            }
-                            .foregroundColor(.gray)
-                        } //: BUTTON
-                    }//: HSTACK
-                    .padding(.top, 25)
+                    SearchView()
                     
-                    ScrollView(.horizontal, showsIndicators: false){
-                        ForEach(plants) { plant in
-                            CardView(plant: plant)
-                        }
-                            
-                        }
-                    }
+                    MainView()
+
+                    CardView()
                     
+                    IndicatorView()
                     
                 }
-            } //: VSTACK
-            .padding()
-            
-            Spacer()
-        } //: SCROLLVIEW
+            }
+        }
+        
+    }
     
     
     //MARK: - VIEWBUILDER
-    //HeaderView
+    
+    //#1. HeaderView
     @ViewBuilder
     func HeaderView()->some View{
         HStack{
@@ -112,9 +87,11 @@ struct HomeView: View {
         }//: HSTACK
         .foregroundColor(.black)
         .padding(.horizontal,16)
+        .frame(maxWidth:.infinity, maxHeight:.infinity, alignment: .top)
+        .frame(height:50)
     }
     
-    //SearchView
+    //#2. SearchView
     @ViewBuilder
     func SearchView()->some View{
         HStack(spacing:15){
@@ -133,7 +110,84 @@ struct HomeView: View {
             .background(Color.white)
             .cornerRadius(16)
         }
-        .padding(.top,16)
+        .padding()
+        .padding(.top, 12)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(height:50)
+    }
+    
+    //#3. OurProduct View
+    @ViewBuilder
+    func MainView()->some View{
+        VStack {
+            HStack{
+                Text("Our Products")
+                    .font(.custom(customFont, size: 30))
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Button {
+                    
+                } label: {
+                    HStack(spacing: 3){
+                        Text("Sort by")
+                            .font(.custom(customFont, size: 16))
+                        
+                        Image(systemName:"chevron.down")
+                            .font(.caption.bold())
+                    }
+                    .foregroundColor(.gray)
+                } //: BUTTON
+            }//: HSTACK
+            .padding(.top, 12)
+        } //: VSTACK
+        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(height: 50)
+        .padding(12)
+    }
+    
+    //#4. Indciator View
+    @ViewBuilder
+    func IndicatorView()->some View{
+        HStack(alignment: .center, spacing: 10){
+            ForEach(plants.indices, id:\.self){ index in
+                
+                Circle()
+                    .fill(Color.black.opacity(currentIndex == index ? 1: 0.1))
+                    .frame(width:10, height: 10)
+                    .scaleEffect(currentIndex == index ? 1.4 : 1)
+                    .animation(.spring(), value: currentIndex == index)
+            }
+        }
+    }
+    
+    //#5. Plants Card View
+    @ViewBuilder
+    func CardView()->some View{
+        VStack {
+            SnapCarousel(index: $currentIndex, items: plants) { plant in
+                GeometryReader{ proxy in
+                    
+                    let size = proxy.size
+                    
+                    Image(plant.imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: size.width)
+                        .cornerRadius(12)
+                        .shadow(color: .black.opacity(0.3), radius: 5, x: 2, y: 2)
+                }
+            }
+            .padding(.vertical, 12)
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .onAppear {
+            for index in 1...6 {
+                plants.append(Plant(imageName:"plant\(index)"))
+            }
+            
+        }
     }
     
 }
