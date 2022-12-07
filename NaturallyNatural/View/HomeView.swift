@@ -32,7 +32,7 @@ struct HomeView: View {
 
                     CardView()
                     
-                    IndicatorView()
+//                    IndicatorView()
                     
                 }
             }
@@ -148,19 +148,19 @@ struct HomeView: View {
     }
     
     //#4. Indciator View
-    @ViewBuilder
-    func IndicatorView()->some View{
-        HStack(alignment: .center, spacing: 10){
-            ForEach(plants.indices, id:\.self){ index in
-                
-                Circle()
-                    .fill(Color.black.opacity(currentIndex == index ? 1: 0.1))
-                    .frame(width:10, height: 10)
-                    .scaleEffect(currentIndex == index ? 1.4 : 1)
-                    .animation(.spring(), value: currentIndex == index)
-            }
-        }
-    }
+//    @ViewBuilder
+//    func IndicatorView()->some View{
+//        HStack(alignment: .center, spacing: 10){
+//            ForEach(plants.indices, id:\.self){ index in
+//
+//                Circle()
+//                    .fill(Color(.black).opacity(currentIndex == index ? 0.5: 0.1))
+//                    .frame(width:10, height: 10)
+//                    .scaleEffect(currentIndex == index ? 1.4 : 1)
+//                    .animation(.spring(), value: currentIndex == index)
+//            }
+//        }
+//    }
     
     //#5. Plants Card View
     @ViewBuilder

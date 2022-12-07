@@ -55,7 +55,7 @@ struct BaseView: View {
                         .foregroundColor(.white)
                         .offset(x:-1)
                         .padding(18)
-                        .background(Color("DarkBlue"))
+                        .background(Color("MainColor"))
                         .clipShape(Circle())
                         .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
                         .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: -5)
@@ -89,7 +89,7 @@ struct BaseView: View {
                 .renderingMode(.template)
                 .scaledToFit()
                 .frame(width: 25, height: 25)
-                .foregroundColor(baseVM.currentTab == Tab ? Color("DarkBlue") : Color.gray.opacity(0.5))
+                .foregroundColor(baseVM.currentTab == Tab ? Color("MainColor") : Color.gray.opacity(0.5))
                 .frame(maxWidth: .infinity)
         }
         
